@@ -1,10 +1,5 @@
-const express = require('express')
+const customExpress = require('./config/customExpress')
 
-const app = express()
+const app = customExpress()
 
-app.listen(3010, ()=> console.log('servidor rodando : http://localhost:3010'))
-
-app.get('/', (req, res) => {
-
-  return res.send('Server Ok')
-})
+app.listen(21047, () => console.log('Servidor rodando na porta 21047'))
