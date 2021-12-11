@@ -1,6 +1,7 @@
 const customExpress = require('./config/customExpress')
 const conexao = require('./db/conection')
 const Tabelas = require('./db/tables')
+const ngrok = require('ngrok');
 
 conexao.connect((error) => {
   if (error) console.log(error)
