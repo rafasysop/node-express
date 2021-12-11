@@ -4,7 +4,7 @@ const moment = require('moment')
 class Atendimento {
   adiciona(atendimento, res) {
     const dataCriacao = moment(new Date()).format()
-    const data = moment(atendimento.data).format('YYYY-MM-DD')
+    const data = moment(atendimento.data).format('YYYY-MM-DD HH:mm:ss')
 
     const dataEhValida = moment(data).isSameOrAfter(dataCriacao)
     const nomeEhValido = atendimento.cliente.length >= 5
@@ -37,12 +37,12 @@ class Atendimento {
     }
   }
 
-  async buscaTodos(){
+  buscaTodos(res){
     const sql = `SELECT * FROM Atendimentos`
 
-    await conexao.query(sql, (error, result) => {
-      if (error) console.log(error);
-      console.log(result)
+    conexao.query(sql, (error, result) => {
+      if (error) res.json(error);
+      res.status(200).json(result)
     })
   }
 }
