@@ -6,8 +6,5 @@ module.exports = app => {
         res.json({ teste: 'req' })
     })
 
-    app.post('/atendimentos', (req, res) => {
-        Atendimento.adiciona(req.body)
-        res.send(req.body)
-    })
+    app.post('/atendimentos', (req, res) => Atendimento.adiciona(req.body, res))
 }
